@@ -1,0 +1,60 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "lbdb"
+  },
+  "AccessToken": {
+    "dataSource": "lbdb",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "lbdb",
+    "public": false,
+    "relations": {
+      "user": {
+        "type": "belongsTo",
+        "model": "user",
+        "foreignKey": "userId"
+      }
+    }
+  },
+  "RoleMapping": {
+    "dataSource": "lbdb",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Email": {
+    "dataSource": "EmailDS"
+  },
+  "Role": {
+    "dataSource": "lbdb",
+    "public": false
+  },
+  "Category": {
+    "dataSource": "lbdb",
+    "public": true
+  },
+  "Entry": {
+    "dataSource": "lbdb",
+    "public": true
+  },
+  "Selection": {
+    "dataSource": "lbdb",
+    "public": true
+  }
+}

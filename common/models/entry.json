@@ -1,0 +1,36 @@
+{
+  "name": "Entry",
+  "plural": "Entries",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "entry_id": {
+      "type": "number",
+      "generated": true
+    },
+    "display_name": {
+      "type": "string",
+      "required": true
+    },
+    "featured_image": {
+      "type": "string"
+    },
+    "featured_video": {
+      "type": "string"
+    },
+    "display_content": {
+      "type": "string"
+    },
+    "category_id": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
