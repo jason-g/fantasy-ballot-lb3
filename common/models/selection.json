@@ -22,6 +22,10 @@
     "entry_id": {
       "type": "number",
       "required": true
+    },
+    "username": {
+      "type": "string",
+      "default": "user"
     }
   },
   "validations": [],

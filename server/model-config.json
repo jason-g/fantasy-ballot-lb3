@@ -56,5 +56,9 @@
   "Selection": {
     "dataSource": "lbdb",
     "public": true
+  },
+  "global": {
+    "dataSource": "lbdb",
+    "public": true
   }
 }

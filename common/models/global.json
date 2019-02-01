@@ -1,0 +1,25 @@
+{
+  "name": "global",
+  "plural": "globals",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "setting": {
+      "type": "string",
+      "required": true,
+      "default": ""
+    },
+    "value": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
