@@ -7,15 +7,30 @@ module.exports = function(Selection) {
     var userId = accessToken && accessToken.userId;
 
     if (!userId) {
-      // without connected user. proceed without hook
+      // without connected user. proceed without hook - shouldn't happen
       return next();
     }
-    if (!ctx.query.where) {
-      ctx.query.where = {};
-    }
-    ctx.query.where.user_id = userId;
-    next();
+    const globals = ctx.Model.app.models.global;
+    globals.findOne({
+      where: {
+        setting: 'isLocked'
+      }
+    }, function(err, isLocked) {
+      if (err) return next(err);
+      let username = 'anonymous';
+      if (isLocked.value == true) {
+        //no more submissions - give full results
+        next();
+      } else {
+        if (!ctx.query.where) {
+          ctx.query.where = {};
+        }
+        ctx.query.where.user_id = userId;
+        next();
+      }
+    });
   });
+
   // on write inject user
   Selection.observe('before save', function limitToUser(ctx, next) {
     var accessToken = ctx.options && ctx.options.accessToken;

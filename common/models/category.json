@@ -17,6 +17,9 @@
     },
     "display_content": {
       "type": "string"
+    },
+    "winner": {
+      "type": "number"
     }
   },
   "validations": [],
