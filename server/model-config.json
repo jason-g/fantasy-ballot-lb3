@@ -14,11 +14,23 @@
     ]
   },
   "User": {
-    "dataSource": "lbdb"
+    "dataSource": "lbdb",
+    "public":false 
+  },
+  "Person": {
+    "dataSource": "lbdb",
+    "public": true
   },
   "AccessToken": {
     "dataSource": "lbdb",
-    "public": false
+    "public": false,
+    "relations": {
+      "user": {
+        "type": "belongsTo",
+        "model": "Person",
+        "foreignKey": "userId"
+      }
+    }
   },
   "ACL": {
     "dataSource": "lbdb",
@@ -43,7 +55,7 @@
   },
   "Role": {
     "dataSource": "lbdb",
-    "public": false
+    "public": true 
   },
   "Category": {
     "dataSource": "lbdb",

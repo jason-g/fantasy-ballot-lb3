@@ -11,24 +11,12 @@ module.exports = function(Selection) {
       return next();
     }
     const globals = ctx.Model.app.models.global;
-    globals.findOne({
-      where: {
-        setting: 'isLocked'
-      }
-    }, function(err, isLocked) {
-      if (err) return next(err);
-      let username = 'anonymous';
-      if (isLocked.value == true) {
-        //no more submissions - give full results
-        next();
-      } else {
-        if (!ctx.query.where) {
-          ctx.query.where = {};
-        }
-        ctx.query.where.user_id = userId;
-        next();
-      }
-    });
+
+    if (!ctx.query.where) {
+      ctx.query.where = {};
+    }
+    ctx.query.where.user_id = userId;
+    next();
   });
 
   // on write inject user
@@ -40,18 +28,18 @@ module.exports = function(Selection) {
       if (err) return next(err);
       let username = 'anonymous';
       if (isLocked.value == true) {
-        err = new Error("Submissions are locked by the administrator");
+        err = new Error('Submissions are locked by the administrator');
         err.statusCode = 400;
         next(err);
       } else {
-        const User = ctx.Model.app.models.User;
+        const Person = ctx.Model.app.models.Person;
         // ToDo: This should be moved to a better location
-        User.findById(accessToken.userId, function(err, user) {
+        Person.findById(accessToken.userId, function(err, user) {
           if (err) return next(err);
           username = user.username;
           if (!userId) {
             // without connected user. proceed without hook        
-            err = new Error("Submissions require a valid user account");
+            err = new Error('Submissions require a valid user account');
             err.statusCode = 400;
             next(err);
             return next();
@@ -64,4 +52,20 @@ module.exports = function(Selection) {
       }
     });
   });
+  Selection.getResults = function(cb) {
+    console.log('RESULTS:');
+    this.find(null, cb);
+  };
+  Selection.remoteMethod(
+    'getResults', {
+      http: {
+        path: '/results',
+        verb: 'get',
+      },
+      returns: {
+        arg: 'getResults',
+        type: 'array',
+      },
+    }
+  );
 };
