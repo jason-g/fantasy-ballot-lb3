@@ -8,9 +8,9 @@ module.exports = function(app) {
 
   /*
   Person.create([
-    {username: 'Jason', email: 'jason@jroid.com', password: 'password007'},
-    {username: 'Rita', email: 'jason@jroid.com', password: 'password007'},
-    {username: 'Admin', email: 'admin@vrballot.com', password: 'password007'},
+    {username: 'User 1', email: 'donotreply@donotreply.com', password: 'password007'},
+    {username: 'User 2', email: 'donotreply@donotreply.com', password: 'password007'},
+    {username: 'Admin', email: 'admin@donotrelpy.com', password: 'password007'},
   ], function(err, users) {
     if (err) throw err;
     console.log('Created users:', users);
@@ -157,7 +157,6 @@ module.exports = function(app) {
   });
 */
 /*
-*/
   Entry.create([{
       "display_name": "BLACK PANTHER",
       "featured_image": "http://prettybrownandnerdy.com/wp-content/uploads/2018/01/Black-Panther-Movie-Runtime-Character-Bios-180x180.jpg",
@@ -1199,4 +1198,5 @@ module.exports = function(app) {
   ], function (err, categories) {
     if (err) throw err;
   });
+*/
 };
