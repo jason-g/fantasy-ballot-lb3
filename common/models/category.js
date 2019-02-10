@@ -20,19 +20,4 @@ module.exports = function(Category) {
   Category.afterRemote('**', function(ctx, user, next) {
     next();
   });
-  /*
-  Category.getResults = function(cb) {
-    let tmpFoo = Category.find({where: {winner: {neq: null}}});
-    console.dir(tmpFoo);
-    cb(tmpFoo);
-  }
-  Category.remoteMethod (
-    'getResults',
-    {
-      http: {path: '/getresults, verb: 'get'},
-      accepts: {arg: 'id', type: 'number', required: true, http: { source: 'query' } },
-      returns: {arg: 'name', type: 'string'}
-    }
-);
-*/
 };

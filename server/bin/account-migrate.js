@@ -7,12 +7,12 @@ ds.automigrate('Account', function(err) {
 
   var accounts = [
     {
-      email: 'ballots@jroid.com',
+      email: 'noreply@email.com',
       createdAt: new Date(),
       lastModifiedAt: new Date()
     },
     {
-      email: 'spiderman@jroid.com',
+      email: 'noreply1@email.com',
       createdAt: new Date(),
       lastModifiedAt: new Date()
     }

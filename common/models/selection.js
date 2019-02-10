@@ -53,7 +53,6 @@ module.exports = function(Selection) {
     });
   });
   Selection.getResults = function(cb) {
-    console.log('RESULTS:');
     this.find(null, cb);
   };
   Selection.remoteMethod(
