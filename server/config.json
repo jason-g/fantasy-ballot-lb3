@@ -17,6 +17,13 @@
       "extended": true,
       "limit": "100kb"
     },
-    "cors": false
+    "cors": {
+      "origin": false,
+      "methods": ["GET", "POST", "PUT", "PATCH", "DELETE"],
+      "allowedHeaders": ["Content-Type", "Authorization"],
+      "exposedHeaders": ["Content-Range", "X-Content-Range"],
+      "credentials": true,
+      "maxAge": 86400
+    }
   }
 }
